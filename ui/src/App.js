@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Container, Form } from 'react-bootstrap';
+import { Col, Container, Form, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import NotificationsArea from './components/NotificationsArea.js';
@@ -11,6 +11,7 @@ import SystemStatusArea from './components/SystemStatusArea.js';
 import CurrentOperationInfoArea from './components/CurrentOperationInfoArea.js';
 import HoldToPour from './components/HoldToPour.js';
 import PowerLevel from './components/PowerLevel.js';
+import TeaLevel from './components/TeaLevel.js';
 
 function App({ isConnected }) {
   return (
@@ -26,7 +27,14 @@ function App({ isConnected }) {
             <PourTimeField />
             <CurrentOperationInfoArea />
             <SystemControls />
-            <HoldToPour />
+            <Row>
+              <Col>
+                <HoldToPour />
+              </Col>
+              <Col>
+                <TeaLevel />
+              </Col>
+            </Row>
           </>
         ) : null}
       </Form>

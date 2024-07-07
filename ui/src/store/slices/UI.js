@@ -13,6 +13,7 @@ const INITIAL_STATE = {
   pouringTime: 1000,
   powerLevelInPercents: 100,
   apiHost: '',
+  speed: 10,
 };
 // slice for system status
 export const UISlice = createSlice({
@@ -27,9 +28,12 @@ export const UISlice = createSlice({
     },
     updatePowerLevel(state, action) {
       state.powerLevelInPercents = validatePowerLevel(action.payload);
-    }
+    },
+    changeSpeed(state, action) {
+      state.speed = action.payload;
+    },
   },
 });
 
 export const actions = UISlice.actions;
-export const { updatePouringTime, updateAPIHost, updatePowerLevel } = actions;
+export const { updatePouringTime, updateAPIHost, updatePowerLevel, changeSpeed } = actions;

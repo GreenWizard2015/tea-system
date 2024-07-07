@@ -1,0 +1,60 @@
+.tea-glass {
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.tea-container {
+  position: relative;
+  height: 100%;
+  max-width: 100%;
+  width: fit-content;
+  display: flex;
+  padding: 1rem;
+}
+
+.cup-image {
+  max-height: 30vh;
+  max-width: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.tea-level {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  height: 3px;
+  background-color: #76b7b2;
+  z-index: 2;
+  color: #76b7b2;
+}
+
+.est-tea-level {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  height: 3px;
+  border-bottom: 3px dashed red;
+  z-index: 3;
+  text-align: right;
+  padding-bottom: 2rem;
+  color: red;
+}
+
+.prev-tea-level {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  height: 3px;
+  border-bottom: 3px dashed black;
+  z-index: 3;
+  text-align: center;
+  padding-bottom: 2rem;
+  color: black;
+}

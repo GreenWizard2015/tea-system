@@ -10,6 +10,5 @@
 
 .hold-to-pour-image {
   object-fit: contain;
-  width: 25%;
   height: auto;
 }

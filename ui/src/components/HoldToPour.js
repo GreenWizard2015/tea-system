@@ -3,12 +3,20 @@ import { connect } from 'react-redux';
 import { Container, Form } from 'react-bootstrap';
 import { useWaterPumpAPI } from '../contexts/WaterPumpAPIContext';
 
-export function HoldToPourComponent({ interval }) {
+export function HoldToPourComponent({ interval, estimatedTeaLevel }) {
   const { API }= useWaterPumpAPI();
   const [isPouring, setIsPouring] = useState(false);
   const [clickToPour, setClickToPour] = useState(false);
   // continuously pour water while the button is pressed
   const lastPouringTime = React.useRef(0);
+  // stop pouring if estimated level is greater than 100%
+  useEffect(() => {
+    if(!isPouring) return;
+    if(estimatedTeaLevel >= 100) {
+      setIsPouring(false);
+    }
+  }, [isPouring, estimatedTeaLevel]);
+  
   const onTick = React.useCallback(
     async () => {
       if(Date.now() < lastPouringTime.current) return;
@@ -77,6 +85,7 @@ function HoldToPourComponent_withExtras({ pouringTime, ...props }) {
 export default connect(
   state => ({
     pouringTime: state.UI.pouringTime,
+    estimatedTeaLevel: state.Temp.estimatedTeaLevel,
   }),
   { }
 )(HoldToPourComponent_withExtras);
